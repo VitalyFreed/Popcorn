@@ -1,0 +1,52 @@
+# Visual Studio
+.vscode/
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Артефакты сборки
+Debug/
+Release/
+x64/
+x86/
+*.obj
+*.log
+*.tlog
+*.pdb
+*.idb
+*.ipch
+*.pch
+*.ilk
+*.aps
+*.ncb
+*.res
+*.sdf
+*.opensdf
+*.cachefile
+
+# Исполняемые файлы и библиотеки
+*.exe
+*.dll
+*.lib
+*.out
+*.iobj
+*.ipdb
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Временные и резервные файлы
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
