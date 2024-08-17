@@ -100,8 +100,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    RECT window_rect;
    window_rect.left = 0;
    window_rect.top = 0;
-   window_rect.right = 320 * 3;
-   window_rect.bottom = 200 * 3;
+   window_rect.right = 360 * 3;
+   window_rect.bottom = 230 * 3;
 
    int screenWidth = GetSystemMetrics(SM_CXSCREEN);
    int screenHeight = GetSystemMetrics(SM_CYSCREEN);
@@ -183,6 +183,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             return On_Key_Down(EKey_Type::Right);
         case VK_SPACE:
             return On_Key_Down(EKey_Type::Space);
+        }
+        break;
+
+    case WM_TIMER:
+        if (wParam == Timer_ID)
+        {
+            return On_Timer();
         }
         break;
     default:
