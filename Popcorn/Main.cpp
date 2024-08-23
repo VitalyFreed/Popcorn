@@ -7,6 +7,7 @@
 #define MAX_LOADSTRING 100
 
 // Глобальные переменные:
+CEngine Engine;
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
@@ -122,7 +123,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
-   Init_Engine(hWnd);
+   Engine.Init_Engine(hWnd);
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
@@ -166,7 +167,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            Draw_Frame(hdc, ps.rcPaint);
+            Engine.Draw_Frame(hdc, ps.rcPaint);
             EndPaint(hWnd, &ps);
         }
         break;
@@ -178,18 +179,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wParam)
         {
         case VK_LEFT:
-            return On_Key_Down(EKey_Type::Left);
+            return Engine.On_Key_Down(EKey_Type::Left);
         case VK_RIGHT:
-            return On_Key_Down(EKey_Type::Right);
+            return Engine.On_Key_Down(EKey_Type::Right);
         case VK_SPACE:
-            return On_Key_Down(EKey_Type::Space);
+            return Engine.On_Key_Down(EKey_Type::Space);
         }
         break;
 
     case WM_TIMER:
         if (wParam == Timer_ID)
         {
-            return On_Timer();
+            return Engine.On_Timer();
         }
         break;
     default:
