@@ -68,11 +68,11 @@ void CBall::Move(HWND hwnd, CLevel* level, int platform_pos_x, int platform_widt
 	}
 
 	// Корректируем позицию при отражении от платформы
-	if (next_pos_y > CConfig::Pos_Y - CConfig::Ball_Size / 2)
+	if (next_pos_y > CConfig::Platform_Pos_Y - CConfig::Ball_Size / 2)
 	{
 		if (next_pos_x >= platform_pos_x && next_pos_x <= platform_pos_x + platform_width)
 		{
-			next_pos_y = CConfig::Pos_Y - CConfig::Ball_Size;
+			next_pos_y = CConfig::Platform_Pos_Y - CConfig::Ball_Size;
 			Ball_Direction = M_PI + (M_PI - Ball_Direction);
 		}
 	}

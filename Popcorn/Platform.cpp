@@ -19,7 +19,7 @@ void CPlatform::Redraw_Platform(HWND hwnd)
 	Prev_Platform_Rect = Platform_Rect;
 
 	Platform_Rect.left = Pos_X * CConfig::Global_Scale;
-	Platform_Rect.top = CConfig::Pos_Y * CConfig::Global_Scale;
+	Platform_Rect.top = CConfig::Platform_Pos_Y * CConfig::Global_Scale;
 	Platform_Rect.right = Platform_Rect.left + Width * CConfig::Global_Scale;
 	Platform_Rect.bottom = Platform_Rect.top + Height * CConfig::Global_Scale;
 
@@ -46,7 +46,7 @@ void CPlatform::Draw(HDC hdc, HPEN bg_pen, HBRUSH bg_brush, RECT& paint_area)
 	SelectObject(hdc, Platform_Circle_Pen);
 	SelectObject(hdc, Platform_Circle_Brush);
 
-	int x = Pos_X, y = CConfig::Pos_Y;
+	int x = Pos_X, y = CConfig::Platform_Pos_Y;
 
 	Ellipse(
 		hdc,

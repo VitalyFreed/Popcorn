@@ -17,12 +17,13 @@ public:
     static const int Level_Offset_Y = 6;
     static const int Brick_Width = 15;
     static const int Brick_Height = 7;
-    static const int Cell_Width = Brick_Width + 1;
-    static const int Cell_Height = Brick_Height + 1;
+    static const int Cell_Width = 16;
+    static const int Cell_Height = 8;
     static const int Ball_Size = 4;
     static const int Max_Pos_X = Level_Offset_X + Level_Width * Cell_Width;
     static const int Max_Pos_Y = 199 - Ball_Size;
-    static const int Pos_Y = 185;
+    static const int Platform_Pos_Y = 185;
+    static const int FPS = 20;
 
     static void Create_Pen_Brush(unsigned char r, unsigned char g, unsigned char b, HPEN& pen, HBRUSH& brush);
 };

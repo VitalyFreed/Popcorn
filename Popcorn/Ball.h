@@ -10,11 +10,6 @@ class CPlatform;
 class CBall
 {
 public:
-    double Ball_Direction;
-
-    HPEN Ball_Pen;
-    HBRUSH Ball_Brush;
-
     CBall();
     void Init();
 
@@ -24,6 +19,9 @@ public:
 private:
     int Ball_Pos_X, Ball_Pos_Y;
     double Ball_Speed;
+    double Ball_Direction;
 
+    HPEN Ball_Pen;
+    HBRUSH Ball_Brush;
     RECT Ball_Rect, Prev_Ball_Rect;
 };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Config.h"
+#include "Active_Brick.h"
 
 enum class EBrick_Type
 {
@@ -18,13 +19,17 @@ enum class ELetter_Type
 class CLevel
 {
 public:
+    CActive_Brick Active_Brick;
+
     CLevel();
 
     void Init();
     void Check_Level_Brick_Hit(int& next_pos_y, double& ball_direction);
-    void Draw(HDC hdc, RECT& paint_area);
+    void Draw(HWND hwnd, HDC hdc, RECT& paint_area);
 
 private:
+    static char Level_01[CConfig::Level_Height][CConfig::Level_Width];
+
     HPEN Brick_Red_Pen, Brick_Blue_Pen, Letter_Pen;
     HBRUSH Brick_Red_Brush, Brick_Blue_Brush;
     RECT Level_Rect;

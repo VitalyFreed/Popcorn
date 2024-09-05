@@ -1,6 +1,6 @@
 #include "Level.h"
 
-char Level_01[CConfig::Level_Height][CConfig::Level_Width] =
+char CLevel::Level_01[CConfig::Level_Height][CConfig::Level_Width] =
 {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -61,7 +61,7 @@ void CLevel::Check_Level_Brick_Hit(int& next_pos_y, double& ball_direction)
 }
 
 // Вывод всех кирпичей уровня
-void CLevel::Draw(HDC hdc, RECT& paint_area)
+void CLevel::Draw(HWND hwnd, HDC hdc, RECT& paint_area)
 {
 	RECT intersection_rect;
 
@@ -82,6 +82,8 @@ void CLevel::Draw(HDC hdc, RECT& paint_area)
 			);
 		}
 	}
+
+	Active_Brick.Draw(hdc, paint_area);
 }
 
 // Вывод кирпича
@@ -109,14 +111,15 @@ void CLevel::Draw_Brick(HDC hdc, int x, int y, EBrick_Type brick_type)
 	SelectObject(hdc, pen);
 	SelectObject(hdc, brush);
 
-	int rect_left = x * CConfig::Global_Scale;
-	int rect_top = y * CConfig::Global_Scale;
-	int rect_right = (x + CConfig::Brick_Width) * CConfig::Global_Scale;
-	int rect_bottom = (y + CConfig::Brick_Height) * CConfig::Global_Scale;
-	int round_width = 2 * CConfig::Global_Scale;
-	int round_height = 2 * CConfig::Global_Scale;
-
-	RoundRect(hdc, rect_left, rect_top, rect_right, rect_bottom, round_width, round_height);
+	RoundRect(
+		hdc,
+		x * CConfig::Global_Scale,
+		y * CConfig::Global_Scale,
+		(x + CConfig::Brick_Width) * CConfig::Global_Scale,
+		(y + CConfig::Brick_Height) * CConfig::Global_Scale,
+		2 * CConfig::Global_Scale,
+		2 * CConfig::Global_Scale
+	);
 }
 
 void CLevel::Set_Brick_Letter_Colors(bool is_swicth_color, HPEN& front_pen, HBRUSH& front_brush, HPEN& back_pen, HBRUSH& back_brush)

@@ -17,13 +17,13 @@ void CEngine::Init_Engine(HWND hWnd)
 
 	Platform.Redraw_Platform(HWnd);
 
-	SetTimer(HWnd, Timer_ID, 20, 0);
+	SetTimer(HWnd, Timer_ID, 1000 / CConfig::FPS, 0);
 }
 
 // Отрисовка экрана игры
 void CEngine::Draw_Frame(HDC hdc, RECT &paint_area)
 {
-	Level.Draw(hdc, paint_area);
+	Level.Draw(HWnd, hdc, paint_area);
 
 	Platform.Draw(hdc, BG_Pen, BG_Brush, paint_area);
 
@@ -74,6 +74,8 @@ int CEngine::On_Key_Down(EKey_Type key_type)
 int CEngine::On_Timer()
 {
 	Ball.Move(HWnd, &Level, Platform.Pos_X, Platform.Width);
+
+	Level.Active_Brick.Act(HWnd);
 
 	return 0;
 }

@@ -16,10 +16,6 @@ const int Timer_ID = WM_USER + 1;
 class CEngine
 {
 public:
-    HWND HWnd;
-    HPEN BG_Pen;
-    HBRUSH BG_Brush;
-
     CEngine();
 
     void Init_Engine(HWND hWnd);
@@ -28,6 +24,10 @@ public:
     int On_Timer();
 
 private:
+    HWND HWnd;
+    HPEN BG_Pen;
+    HBRUSH BG_Brush;
+
     CBall Ball;
     CLevel Level;
     CPlatform Platform;
